@@ -7,12 +7,15 @@ import React from "react";
 import ReactDOMServer from "react-dom/server";
 import App from "../src/App";
 
-const PORT = 8001;
+const PORT = process.env.PORT || 8001;
 const app = express();
 
-app.use("^/$", async (req, res, next) => {
+// Serve static files from the build directory
+app.use(express.static(path.resolve(__dirname, '..', 'build')));
+
+// Handle all routes with the React app
+app.get("*", async (req, res, next) => {
   try {
-    
     // Fetch data from the API
     const { data } = await axios.get(`https://leaponapi-test.herokuapp.com/api/shuvo/`);
 
@@ -53,8 +56,6 @@ app.use("^/$", async (req, res, next) => {
   }
 });
 
-app.use(express.static(path.resolve(__dirname, '..', 'build')));
-
-app.listen(process.env.PORT || PORT, () => {
+app.listen(PORT, () => {
   console.log(`App launched on ${PORT}`);
 });
