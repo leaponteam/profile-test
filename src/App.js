@@ -2,12 +2,14 @@
 import React from "react";
 import "./App.css";
 import { Helmet } from "react-helmet";
-import axios from "axios";
+// import axios from "axios";
 
 
 function App(props) {
 
-  axios.defaults.baseURL = "https://leaponapi-test.herokuapp.com/";
+  // axios.defaults.baseURL = "https://leaponapi-test.herokuapp.com/";
+    // "start:prod": "concurrently \"npm run ssr\" \"serve -s build\"",
+  // json package cmd
   // Use initial data if props are not available
   const initialData = typeof window !== "undefined" ? window.__INITIAL_DATA__ : {};
 
