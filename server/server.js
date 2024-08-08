@@ -18,8 +18,8 @@ app.get("^/$", async (req, res, next) => {
   console.log("Received request for /");
   try {
     // Fetch data from the API
-    // const { data } = await axios.get(`https://leaponapi-test.herokuapp.com/api/shuvo/`);
-    const { data } = await axios.get(`http://127.0.0.1:8000/api/shuvo/`);
+    const { data } = await axios.get(`https://leaponapi-test.herokuapp.com/api/shuvo/`);
+    // const { data } = await axios.get(`http://127.0.0.1:8000/api/shuvo/`);
 
 
     // Extract meta information from the API response
