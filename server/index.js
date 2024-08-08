@@ -1,3 +1,4 @@
+// server/index.js
 require('ignore-styles')
 
 require('@babel/register')({

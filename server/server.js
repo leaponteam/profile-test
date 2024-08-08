@@ -1,3 +1,4 @@
+// server.js
 import express from "express";
 import fs from "fs";
 import path from "path";
@@ -10,15 +11,15 @@ import App from "../src/App";
 const PORT = process.env.PORT || 8001;
 const app = express();
 
-// Serve static files from the build directory
-app.use(express.static(path.resolve(__dirname, '..', 'build')));
+
 
 // Handle all routes with the React app
-app.get("*", async (req, res, next) => {
+app.get("^/$", async (req, res, next) => {
+  console.log("Received request for /");
   try {
     // Fetch data from the API
-    const { data } = await axios.get(`https://leaponapi-test.herokuapp.com/api/shuvo/`);
-    // const { data } = await axios.get(`http://127.0.0.1:8000/api/shuvo/`);
+    // const { data } = await axios.get(`https://leaponapi-test.herokuapp.com/api/shuvo/`);
+    const { data } = await axios.get(`http://127.0.0.1:8000/api/shuvo/`);
 
 
     // Extract meta information from the API response
@@ -57,6 +58,9 @@ app.get("*", async (req, res, next) => {
     return res.status(500).send("Error fetching data from API");
   }
 });
+
+// Serve static files from the build directory
+app.use(express.static(path.resolve(__dirname, '..', 'build')));
 
 app.listen(PORT, () => {
   console.log(`App launched on ${PORT}`);
