@@ -11,8 +11,8 @@ function Profile() {
     useEffect(() => {
         const fetchProfileData = async () => {
             try {
-                // const response = await fetch(`http://127.0.0.1:8000/${username}/`);
-                const response = await fetch(`https://leaponapi-test.herokuapp.com/${username}/`);
+                // const response = await fetch(`http://127.0.0.1:8000/user/${username}/`);
+                const response = await fetch(`https://leaponapi-test.herokuapp.com/user/${username}/`);
                 
                 const data = await response.json();
                 setProfileData(data);
