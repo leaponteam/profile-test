@@ -31,7 +31,7 @@
     "start:prod": "concurrently \"npm run start\" \"npm run ssr\"",
     "setupProxy": "node setupProxy.js"
   },
-  "proxy": "http://127.0.0.1:8000",
+  "proxy": "https://leaponapi-test.herokuapp.com",
   "eslintConfig": {
     "extends": [
       "react-app",
