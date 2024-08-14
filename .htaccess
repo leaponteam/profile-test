@@ -1,4 +1,14 @@
-RewriteEngine on
+RewriteEngine On
+
+# First, serve existing files (like PHP files, images, etc.)
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
+
+# If the request is not for an actual file or directory, route it through React
+RewriteCond %{REQUEST_URI} !^/index.php
+
+# If the request is not for a file/directory or index.php, serve index.html (React app)
+RewriteRule ^ /index.html [L]
+
+# Otherwise, pass the request to index.php for PHP processing
 RewriteRule ^(.*)$ /index.php?path=$1 [NC,L,QSA]
